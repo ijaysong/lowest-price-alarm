@@ -1,0 +1,22 @@
+<app-header-pane></app-header-pane>
+<div>
+  <ul>
+    <li>
+      <a (click)="onClickAddItem()">
+        <i class="fa-solid fa-cart-arrow-down"></i><span>추가</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="onClickDeleteItem()">
+        <i class="fa-solid fa-xmark"></i><span>삭제</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<app-product-list></app-product-list>
+
+<app-product-add [opened]="openedAddDialog" (shut)="onClosedAddDialog()"></app-product-add>
+
+<footer>
+  <app-footer-pane></app-footer-pane>
+</footer>

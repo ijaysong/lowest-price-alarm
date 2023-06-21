@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+div {
+  display: flex;
+}
+
+ul {
+  list-style:none;
+}
+
+li {
+  float: left;
+}
+
+i {
+  margin: 5px
+}

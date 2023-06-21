@@ -1,0 +1,14 @@
+{
+  "trailingComma": "none",
+  "tabWidth": 2,
+  "singleQuote": true,
+  "overrides": [{
+    "files": "*.html",
+    "options": {
+      "tabWidth": 4,
+      "singleQuote": false,
+      "printWidth": 150,
+      "jsx-bracket-same-line": true
+    }
+  }]
+}
