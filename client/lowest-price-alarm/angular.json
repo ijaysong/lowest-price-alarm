@@ -20,6 +20,8 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "baseHref": "/",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -33,7 +35,7 @@
                 "input": "node_modules/@progress/kendo-theme-default/dist/all.css",
                 "bundleName": "extcss"
               },
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -98,7 +100,7 @@
               {
                 "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
               },
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }

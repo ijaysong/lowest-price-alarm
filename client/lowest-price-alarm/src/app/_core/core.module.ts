@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HeaderPaneComponent } from './components/header-pane/header-pane.component';
-import { FooterPaneComponent } from './components/footer-pane/footer-pane.component';
-import { DeleteConfirmDialogComponent } from './components/delete-confirm-dialog/delete-confirm-dialog.component';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { NotificationService } from '@progress/kendo-angular-notification';
-import { ErrorLayoutComponent } from './components/layout/error-layout.component';
-import { ErrorPaneComponent } from './components/error-pane/error-pane.component';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+
+import { DeleteConfirmDialogComponent } from './components/dialog/delete-confirm/delete-confirm-dialog.component';
+import { ErrorContentPaneComponent } from './components/content-pane/error/error-content-pane.component';
+import { ErrorLayoutComponent } from './components/layout/error-layout/error-layout.component';
+import { HeaderPaneComponent } from './components/header-pane/header-pane.component';
+import { FooterPaneComponent } from './components/footer-pane/footer-pane.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,7 @@ import { ErrorPaneComponent } from './components/error-pane/error-pane.component
     FooterPaneComponent,
     DeleteConfirmDialogComponent,
     ErrorLayoutComponent,
-    ErrorPaneComponent
+    ErrorContentPaneComponent
   ],
   exports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { ErrorPaneComponent } from './components/error-pane/error-pane.component
   ],
   imports: [
     CommonModule,
-    DialogsModule
+    DialogsModule,
+    ButtonsModule
   ],
   providers: [
     NotificationService

@@ -1,4 +1,38 @@
-<div>
-  <kendo-grid>
+<div class="functions">
+  <ul class="functions__list">
+    <li>
+      <a (click)="onClickAddItem()">
+        <i class="fa-solid fa-cart-arrow-down margin-5"></i><span>추가</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="onClickDeleteItem()">
+        <i class="fa-solid fa-xmark margin-5"></i><span>삭제</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="k-grid-layout">
+  <kendo-grid [pageSize]="10" [pageable]="true" [sortable]="true" [style.height.%]="100">
+    <kendo-grid-checkbox-column [showSelectAll]="true" [width]="40">
+      <ng-template kendoGridHeaderTemplate>
+        <div class="flex justify-center items-center">
+          <input class="k-checkbox k-checkbox-md k-rounded-md" kendoGridSelectAllCheckbox type="checkbox" />
+        </div>
+      </ng-template>
+      <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+        <div>
+          <input [kendoGridSelectionCheckbox]="rowIndex" type="checkbox" />
+        </div>
+      </ng-template>
+    </kendo-grid-checkbox-column>
+    <kendo-grid-column [width]="200"></kendo-grid-column>
+    <kendo-grid-column [width]="350"></kendo-grid-column>
+    <kendo-grid-column [width]="200"></kendo-grid-column>
+    <kendo-grid-column [width]="150">
+      <ng-template>
+        <button>가격 변동 추이</button>
+      </ng-template>
+    </kendo-grid-column>
   </kendo-grid>
 </div>

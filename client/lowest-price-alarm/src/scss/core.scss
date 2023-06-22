@@ -1,0 +1,32 @@
+.header {
+  width: 100%;
+  background: #ffffff;
+  margin-bottom: 30px;
+  &__inner {
+    height: 80px;
+    margin: 0 auto;
+  }
+  &__logo {
+    width: 160px;
+    a {
+      display: block;
+      img {
+        width: auto;
+        height: 70px;
+        vertical-align: bottom;
+      }
+    }
+  }
+}
+
+.content {
+  padding: 0 0 44px;
+}
+
+.footer {
+  padding: 5px;
+  &__inner {
+    display: flex;
+    justify-content: center;
+  }
+}

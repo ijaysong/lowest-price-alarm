@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { DialogRef, DialogService, WindowService } from '@progress/kendo-angular-dialog';
+import { DialogRef, DialogService, WindowRef, WindowService } from '@progress/kendo-angular-dialog';
 
-import { DeleteConfirmDialogComponent } from '../../_core/components/delete-confirm-dialog/delete-confirm-dialog.component';
+import { DeleteConfirmDialogComponent } from '../../_core/components/dialog/delete-confirm/delete-confirm-dialog.component';
+import { ProductNewComponent } from '../components/product-new/product-new.component';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +23,19 @@ export class ProductService {
    * Method
    * ===========================================================================
    */
-  openDeleteDialog():  DialogRef {
+  openNew(): WindowRef {
+      return this.windowService.open({
+        autoFocusedElement: 'form',
+        content: ProductNewComponent,
+        title: ``,
+        minWidth: 800,
+      });
+  }
+
+  openDeleteDialog(): DialogRef {
     return this.dialogService.open({
-      content: DeleteConfirmDialogComponent
+      content: DeleteConfirmDialogComponent,
+      minWidth: 400,
     });
   }
 }
