@@ -23,7 +23,7 @@ export class UiNotificationService {
     this.notificationService.show({
       content: '정상적으로 등록되었습니다.',
       hideAfter: 1000,
-      position: { horizontal: 'center', vertical: 'top' },
+      position: { horizontal: 'right', vertical: 'bottom' },
       animation: { type: 'fade', duration: 400 },
       type: { style: 'success', icon: true }
     });
@@ -33,7 +33,7 @@ export class UiNotificationService {
     this.notificationService.show({
       content: '정상적으로 삭제되었습니다.',
       hideAfter: 1000,
-      position: { horizontal: 'center', vertical: 'top' },
+      position: { horizontal: 'right', vertical: 'bottom' },
       animation: { type: 'fade', duration: 400 },
       type: { style: 'success', icon: true }
     });

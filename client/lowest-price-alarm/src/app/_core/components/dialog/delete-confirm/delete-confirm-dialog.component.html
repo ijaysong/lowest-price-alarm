@@ -4,11 +4,11 @@
         <i class="fas fa-question-circle"></i>
     </span>
   </kendo-dialog-titlebar>
-  <div class="k-display-flex k-justify-content-center">
+  <div class="dialog__text">
     <p>삭제하시겠습니까?</p>
   </div>
-  <div class="k-display-flex k-justify-content-end margin-10">
-    <button kendoButton themeColor="error" size="medium" (click)="onDelete()">삭제</button>
-    <button kendoButton fillMode="clear" size="medium" (click)="onCancel()">취소</button>
+  <div class="dialog__buttons">
+    <button (click)="onDelete()" kendoButton size="medium" themeColor="error">삭제</button>
+    <button (click)="onCancel()" fillMode="clear" kendoButton size="medium">취소</button>
   </div>
 </div>

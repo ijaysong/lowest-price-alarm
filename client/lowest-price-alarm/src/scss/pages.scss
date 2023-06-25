@@ -10,3 +10,19 @@
     }
   }
 }
+
+.add {
+  &__content {
+    margin: 100px 225px 100px;
+  }
+  &__input {
+    width: 550px;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: end;
+    h3 {
+      margin : 7px 10px 10px 10px;
+    }
+  }
+}
