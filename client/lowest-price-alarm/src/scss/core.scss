@@ -1,26 +1,33 @@
 .header {
   width: 100%;
   background: #ffffff;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   &__inner {
     height: 80px;
     margin: 0 auto;
   }
   &__logo {
-    width: 160px;
+    width: 300px;
+    display: flex;
+    align-items: center;
     a {
       display: block;
       img {
         width: auto;
-        height: 70px;
+        height: 80px;
         vertical-align: bottom;
       }
+    }
+    p {
+      margin: 10px;
+      padding-top: 15px;
+      font-size: 30px;
     }
   }
 }
 
 .content {
-  padding: 0 0 44px;
+  padding: 1% 0%;
   background: #ebf0f2;
   &__inner {
     width:  1024px;
@@ -40,16 +47,17 @@
 .page-404 {
   &__box {
     background: white;
-    margin-top: 100px;
-    padding: 48px 0 56px;
+    margin: 5%;
+    padding: 5%;
     text-align: center;
     border-radius: 4px;
     background-clip: padding-box;
   }
-  &__title {
+  &__image {
     position: relative;
-    padding-top: 86px;
-    margin-bottom: 32px;
+    width: 300px;
+  }
+  &__title {
     text-align: center;
   }
   &__text--lead {
@@ -62,6 +70,10 @@
     line-height: 1.3846153846;
     margin-bottom: 36px;
   }
+  &__button {
+    width: 316px;
+    margin-bottom: 2%;
+  }
 }
 
 .footer {
@@ -69,5 +81,20 @@
   &__inner {
     display: flex;
     justify-content: center;
+  }
+  &__error {
+    background: #ebf0f2;
+  }
+}
+
+.dialog {
+  &__text {
+    display: flex;
+    justify-content: center;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: end;
+    margin: 10px;
   }
 }
