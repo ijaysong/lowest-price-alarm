@@ -10,6 +10,8 @@ import { ErrorContentPaneComponent } from './components/content-pane/error/error
 import { ErrorLayoutComponent } from './components/layout/error-layout/error-layout.component';
 import { HeaderPaneComponent } from './components/header-pane/header-pane.component';
 import { FooterPaneComponent } from './components/footer-pane/footer-pane.component';
+import { OverlayContainerDirective } from './directives/overlay-container.directive';
+import { OverlayService } from './services/overlay.service';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import { FooterPaneComponent } from './components/footer-pane/footer-pane.compon
     FooterPaneComponent,
     DeleteConfirmDialogComponent,
     ErrorLayoutComponent,
-    ErrorContentPaneComponent
+    ErrorContentPaneComponent,
+    OverlayContainerDirective
   ],
   exports: [
     CommonModule,
     DialogsModule,
     HeaderPaneComponent,
-    FooterPaneComponent
+    FooterPaneComponent,
+    OverlayContainerDirective
   ],
   imports: [
     CommonModule,

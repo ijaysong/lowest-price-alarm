@@ -5,7 +5,10 @@ import { NgxSpinnerService } from 'ngx-spinner';
 
 import { UiNotificationService } from '../../../_core/services/ui-notification.service';
 import { ProductService } from '../../services/product.service';
-import { ProductNewComponent } from '../product-new/product-new.component';
+import {
+  ProductNewLayoutComponent
+} from '../layout/product-new-layout/product-new-layout.component';
+import { OverlayService } from '../../../_core/services/overlay.service';
 
 @Component({
   selector: 'app-product-list',
@@ -18,7 +21,7 @@ export class ProductListComponent implements OnInit {
    * constructor
    * ===========================================================================
    */
-  constructor(private spinner: NgxSpinnerService, private service: ProductService, private notificationService: UiNotificationService) {
+  constructor(private spinner: NgxSpinnerService, private service: ProductService, private notificationService: UiNotificationService, private overlayService: OverlayService) {
   }
 
   /**
@@ -34,20 +37,20 @@ export class ProductListComponent implements OnInit {
    * Method
    * ===========================================================================
    */
-  onClickAddItem() {
-    // this.overlayService.show();
+  onClickNewItem() {
+    this.overlayService.show();
     const windowRef: WindowRef = this.service.openNew();
-    const content = windowRef.content as ComponentRef<ProductNewComponent>;
+    const content = windowRef.content as ComponentRef<ProductNewLayoutComponent>;
     content.instance.closeWindow.subscribe((x) => {
       if (x.submit) {
-        // this.refreshGrid();
+    //     // this.refreshGrid();
         this.notificationService.notifySuccessRegistered();
       }
       windowRef.close();
     });
-    // windowRef.result.subscribe(() => {
-    //   this.overlayService.hide();
-    // });
+    windowRef.result.subscribe(() => {
+      this.overlayService.hide();
+    });
   }
 
   onClickDeleteItem() {
