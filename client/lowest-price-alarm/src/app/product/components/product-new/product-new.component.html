@@ -1,9 +1,19 @@
 <div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="newForm">
-    <p>상품 URL</p>
-    <input
-      formControlName="url"
-      placeholder="입력해주세요"
-      type="text"/>
+  <form [formGroup]="newForm">
+    <div class="add__content">
+      <p>상품 URL</p>
+      <input
+        class="add__input"
+        formControlName="url"
+        placeholder="가격 변동 시 알림 받고 싶은 상품 URL을 입력해주세요"
+        type="text"/>
+    </div>
+    <div class="add__buttons">
+      <h3>1/2</h3>
+      <div>
+        <button (click)="onClickNext()" kendoButton size="medium" themeColor="primary">다음</button>
+        <button (click)="onClickClear()" fillMode="clear" kendoButton size="medium">취소</button>
+      </div>
+    </div>
   </form>
 </div>

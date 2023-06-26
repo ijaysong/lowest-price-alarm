@@ -14,7 +14,23 @@ export class ProductNewComponent {
     url: new FormControl<string>('')
   })
 
-  onSubmit(): void {
+  /**
+   * ===========================================================================
+   * constructor
+   * ===========================================================================
+   */
+  constructor() {}
+
+  /**
+   * ===========================================================================
+   * Method
+   * ===========================================================================
+   */
+  onClickNext() {
     this.closeWindow.emit({submit: true});
+  }
+
+  onClickClear() {
+    this.newForm.controls.url.reset();
   }
 }
