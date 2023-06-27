@@ -16,6 +16,8 @@ import { OverlayService } from '../../../_core/services/overlay.service';
 })
 export class ProductListComponent implements OnInit {
 
+  spinnerName = 'product-delete';
+
   /**
    * ===========================================================================
    * constructor
@@ -30,6 +32,7 @@ export class ProductListComponent implements OnInit {
    * ===========================================================================
    */
   ngOnInit() {
+    this.refreshGrid();
   }
 
   /**
@@ -37,13 +40,17 @@ export class ProductListComponent implements OnInit {
    * Method
    * ===========================================================================
    */
-  onClickNewItem() {
+  refreshGrid(): void {
+   // TODO 리스트 api 호출
+  }
+
+  onClickNewItem(): void {
     this.overlayService.show();
-    const windowRef: WindowRef = this.service.openNew();
+    const windowRef: WindowRef = this.service.openNewWindow();
     const content = windowRef.content as ComponentRef<ProductNewLayoutComponent>;
     content.instance.closeWindow.subscribe((x) => {
       if (x.submit) {
-    //     // this.refreshGrid();
+        this.refreshGrid();
         this.notificationService.notifySuccessRegistered();
       }
       windowRef.close();
@@ -60,17 +67,21 @@ export class ProductListComponent implements OnInit {
         // Close
       } else {
         if (result.text === 'confirm') {
-          this.spinner.show();
-          this.notificationService.notifySuccessDeleted();
+          this.spinner.show(this.spinnerName);
+          // TODO 삭제 api 호출
           // this.api
-          //   .deleteFileUseHistory(id)
+          //   .deleteProduct(id)
           //   .pipe(finalize(() => this.onFinalize()))
           //   .subscribe(() => {
           //     this.refreshGrid();
-          //     this.sesameNotification.notifySuccessDeleted();
+          //     this.notificationService.notifySuccessDeleted();
           //   });
         }
       }
     });
+  }
+
+  onFinalize(): void {
+    this.spinner.hide(this.spinnerName);
   }
 }

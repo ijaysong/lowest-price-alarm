@@ -1,18 +1,21 @@
 <div>
   <form [formGroup]="newForm">
     <div class="add__content">
-      <p>상품 URL</p>
-      <input
-        class="add__input"
-        formControlName="url"
-        placeholder="가격 변동 시 알림 받고 싶은 상품 URL을 입력해주세요"
-        type="text"/>
+      <kendo-formfield>
+        <kendo-label text="상품 URL" class="required"></kendo-label>
+        <input
+          class="add__input"
+          formControlName="url"
+          placeholder=""
+          type="text" />
+        <kendo-formerror>입력해주세요</kendo-formerror>
+      </kendo-formfield>
     </div>
     <div class="add__buttons">
       <h3>1/2</h3>
       <div>
         <button (click)="onClickNext()" kendoButton size="medium" themeColor="primary">다음</button>
-        <button (click)="onClickClear()" fillMode="clear" kendoButton size="medium">취소</button>
+        <button (click)="onClickClear()" fillMode="clear" kendoButton size="medium">리셋</button>
       </div>
     </div>
   </form>

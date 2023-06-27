@@ -11,6 +11,8 @@ import { CoreModule } from '../_core/core.module';
 import { ButtonModule } from '@progress/kendo-angular-buttons';
 import { ProductNewLayoutComponent } from './components/layout/product-new-layout/product-new-layout.component';
 import { ProductInfoComponent } from './components/product-info/product-info.component';
+import { LabelModule } from '@progress/kendo-angular-label';
+import { FormFieldModule } from '@progress/kendo-angular-inputs';
 
 @NgModule({
   declarations: [ProductListComponent, ProductNewComponent, ProductListLayoutComponent, ProductNewLayoutComponent, ProductInfoComponent],
@@ -19,7 +21,9 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
     WindowModule,
     ReactiveFormsModule,
     CoreModule,
-    ButtonModule
+    ButtonModule,
+    LabelModule,
+    FormFieldModule
   ]
 })
 export class ProductModule { }

@@ -1,2 +1,2 @@
-<app-product-new (closeWindow)="onCloseAdd($event)" *ngIf="openAdd"></app-product-new>
-<app-product-info *ngIf="!openAdd"></app-product-info>
+<app-product-new (next)="onNextPage($event)" *ngIf="displayProductNew"></app-product-new>
+<app-product-info [url]="url" (prev)="onPrevPage($event)" (closeWindow)="onCloseWindow($event)" *ngIf="!displayProductNew"></app-product-info>

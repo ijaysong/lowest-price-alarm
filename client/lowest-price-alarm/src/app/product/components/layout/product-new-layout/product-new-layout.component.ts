@@ -1,14 +1,15 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { NewFormAction } from '../../../model';
+import { ProductNewAction, ProductNewLayoutAction, ProductInfoAction } from '../../../model';
 
 @Component({
-  selector: 'app-product-add-layout',
+  selector: 'app-product-new-layout',
   templateUrl: './product-new-layout.component.html',
 })
 export class ProductNewLayoutComponent {
-  @Output() closeWindow = new EventEmitter<NewFormAction>();
+  @Output() closeWindow = new EventEmitter<ProductNewLayoutAction>();
 
-  openAdd = true
+  displayProductNew = true
+  url = '';
 
   /**
    * ===========================================================================
@@ -23,10 +24,22 @@ export class ProductNewLayoutComponent {
    * Method
    * ===========================================================================
    */
-  onCloseAdd(item: NewFormAction) {
-    console.log(item);
-    if (item.submit) {
-      this.openAdd = false;
+  onNextPage(result: ProductNewAction): void {
+    if (result.submit) {
+      this.displayProductNew = false;
+      this.url = result.url;
+    }
+  }
+
+  onPrevPage(result: ProductInfoAction): void {
+    if (result.prev) {
+      this.displayProductNew = true;
+    }
+  }
+
+  onCloseWindow(result: ProductInfoAction): void {
+    if (result.submit) {
+      this.closeWindow.emit({submit: true})
     }
   }
 }
