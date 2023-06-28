@@ -4,13 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ScrappingService {
-
   /**
    * ===========================================================================
    * constructor
    * ===========================================================================
    */
-  constructor() { }
+  constructor() {}
 
   /**
    * ===========================================================================
@@ -19,5 +18,6 @@ export class ScrappingService {
    */
   getProductInfo(url: string): void {
     // TODO url 페이지 스크래핑
+    console.log(url);
   }
 }

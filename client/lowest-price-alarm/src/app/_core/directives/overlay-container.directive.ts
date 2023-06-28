@@ -1,12 +1,13 @@
 import { Directive, ElementRef, Renderer2 } from '@angular/core';
-import { OverlayService } from '../services/overlay.service';
+
 import * as _ from 'lodash';
+
+import { OverlayService } from '../services/overlay.service';
 
 @Directive({
   selector: '[appOverlayContainer]'
 })
 export class OverlayContainerDirective {
-
   /**
    * ===========================================================================
    * constructor
@@ -60,5 +61,4 @@ export class OverlayContainerDirective {
 
     this.renderer.removeChild(this.elementRef.nativeElement, overlay);
   }
-
 }

@@ -6,7 +6,6 @@ import { NotificationService } from '@progress/kendo-angular-notification';
   providedIn: 'root'
 })
 export class UiNotificationService {
-
   /**
    * ===========================================================================
    * constructor

@@ -1,14 +1,19 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ProductNewAction, ProductNewLayoutAction, ProductInfoAction } from '../../../model';
+
+import {
+  ProductNewAction,
+  ProductNewLayoutAction,
+  ProductInfoAction
+} from '../../../model';
 
 @Component({
   selector: 'app-product-new-layout',
-  templateUrl: './product-new-layout.component.html',
+  templateUrl: './product-new-layout.component.html'
 })
 export class ProductNewLayoutComponent {
   @Output() closeWindow = new EventEmitter<ProductNewLayoutAction>();
 
-  displayProductNew = true
+  displayProductNew = true;
   url = '';
 
   /**
@@ -16,8 +21,7 @@ export class ProductNewLayoutComponent {
    * constructor
    * ===========================================================================
    */
-  constructor() {
-  }
+  constructor() {}
 
   /**
    * ===========================================================================
@@ -39,7 +43,7 @@ export class ProductNewLayoutComponent {
 
   onCloseWindow(result: ProductInfoAction): void {
     if (result.submit) {
-      this.closeWindow.emit({submit: true})
+      this.closeWindow.emit({ submit: true });
     }
   }
 }

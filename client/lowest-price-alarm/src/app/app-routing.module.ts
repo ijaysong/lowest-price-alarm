@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import {
-  ProductListLayoutComponent
-} from './product/components/layout/product-list-layout/product-list-layout.component';
 import { ErrorLayoutComponent } from './_core/components/layout/error-layout/error-layout.component';
+import { ProductListLayoutComponent } from './product/components/layout/product-list-layout/product-list-layout.component';
 
-const routes: Routes = [
+const RouteList: Routes = [
   {
     path: '',
     component: ProductListLayoutComponent
@@ -19,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(RouteList)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

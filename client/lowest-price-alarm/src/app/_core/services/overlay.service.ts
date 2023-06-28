@@ -5,7 +5,6 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class OverlayService extends Subject<boolean> {
-
   /**
    * ===========================================================================
    * constructor

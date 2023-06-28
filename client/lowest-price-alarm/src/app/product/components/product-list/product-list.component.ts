@@ -1,21 +1,22 @@
 import { Component, ComponentRef, OnInit } from '@angular/core';
 
-import { DialogCloseResult, DialogRef, WindowRef } from '@progress/kendo-angular-dialog';
+import {
+  DialogCloseResult,
+  DialogRef,
+  WindowRef
+} from '@progress/kendo-angular-dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 
+import { OverlayService } from '../../../_core/services/overlay.service';
 import { UiNotificationService } from '../../../_core/services/ui-notification.service';
 import { ProductService } from '../../services/product.service';
-import {
-  ProductNewLayoutComponent
-} from '../layout/product-new-layout/product-new-layout.component';
-import { OverlayService } from '../../../_core/services/overlay.service';
+import { ProductNewLayoutComponent } from '../layout/product-new-layout/product-new-layout.component';
 
 @Component({
   selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
+  templateUrl: './product-list.component.html'
 })
 export class ProductListComponent implements OnInit {
-
   spinnerName = 'product-delete';
 
   /**
@@ -23,15 +24,19 @@ export class ProductListComponent implements OnInit {
    * constructor
    * ===========================================================================
    */
-  constructor(private spinner: NgxSpinnerService, private service: ProductService, private notificationService: UiNotificationService, private overlayService: OverlayService) {
-  }
+  constructor(
+    private spinner: NgxSpinnerService,
+    private service: ProductService,
+    private notificationService: UiNotificationService,
+    private overlayService: OverlayService
+  ) {}
 
   /**
    * ===========================================================================
    * Lifecycle Hooks https://angular.io/guide/lifecycle-hooks
    * ===========================================================================
    */
-  ngOnInit() {
+  ngOnInit(): void {
     this.refreshGrid();
   }
 
@@ -41,13 +46,14 @@ export class ProductListComponent implements OnInit {
    * ===========================================================================
    */
   refreshGrid(): void {
-   // TODO 리스트 api 호출
+    // TODO 리스트 api 호출
   }
 
   onClickNewItem(): void {
     this.overlayService.show();
     const windowRef: WindowRef = this.service.openNewWindow();
-    const content = windowRef.content as ComponentRef<ProductNewLayoutComponent>;
+    const content =
+      windowRef.content as ComponentRef<ProductNewLayoutComponent>;
     content.instance.closeWindow.subscribe((x) => {
       if (x.submit) {
         this.refreshGrid();
@@ -60,7 +66,7 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  onClickDeleteItem() {
+  onClickDeleteItem(): void {
     const dialog: DialogRef = this.service.openDeleteDialog();
     dialog.result.subscribe((result) => {
       if (result instanceof DialogCloseResult) {

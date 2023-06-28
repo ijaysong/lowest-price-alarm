@@ -1,12 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ScrappingService } from '../../../_core/services/scrapping.service';
+
 import { finalize, Observable } from 'rxjs';
-import { ProductInfoAction } from '../../model/product-info';
+
+import { ScrappingService } from '../../../_core/services/scrapping.service';
+import { ProductInfoAction } from '../../model';
 
 @Component({
   selector: 'app-product-info',
-  templateUrl: './product-info.component.html',
+  templateUrl: './product-info.component.html'
 })
 export class ProductInfoComponent implements OnInit {
   @Input() url = '';
@@ -20,7 +22,10 @@ export class ProductInfoComponent implements OnInit {
    * constructor
    * ===========================================================================
    */
-  constructor(private spinner: NgxSpinnerService, private scrapper: ScrappingService) {}
+  constructor(
+    private spinner: NgxSpinnerService,
+    private scrapper: ScrappingService
+  ) {}
 
   /**
    * ===========================================================================
@@ -32,7 +37,7 @@ export class ProductInfoComponent implements OnInit {
 
     new Observable(() => {
       this.scrapper.getProductInfo(this.url);
-    }).pipe(finalize(() => this.onFinalize()))
+    }).pipe(finalize(() => this.onFinalize()));
   }
 
   /**
@@ -43,14 +48,14 @@ export class ProductInfoComponent implements OnInit {
   onSubmit(): void {
     // TODO reqData 모집
     // TODO save api 호출
-    this.closeWindow.emit({submit: true});
+    this.closeWindow.emit({ submit: true });
   }
 
   onClickMovePrev(): void {
-    this.prev.emit({prev: true});
+    this.prev.emit({ prev: true });
   }
 
   onFinalize(): void {
-    this.spinner.hide(this.spinnerName)
+    this.spinner.hide(this.spinnerName);
   }
 }
