@@ -2,13 +2,15 @@
   <form [formGroup]="newForm">
     <div class="add__content">
       <kendo-formfield>
-        <kendo-label text="상품 URL" class="required"></kendo-label>
+        <kendo-label class="required" text="상품 URL"></kendo-label>
         <input
+          (blur)="onBlur()"
           class="add__input"
           formControlName="url"
           placeholder=""
           type="text" />
-        <kendo-formerror>입력해주세요</kendo-formerror>
+        <kendo-formerror *ngIf="url.invalid && url.hasError('required')">입력해주세요</kendo-formerror>
+        <kendo-formerror *ngIf="url.invalid && url.hasError('invalidUrl')">W컨셉 URL을 입력해주세요</kendo-formerror>
       </kendo-formfield>
     </div>
     <div class="add__buttons">
