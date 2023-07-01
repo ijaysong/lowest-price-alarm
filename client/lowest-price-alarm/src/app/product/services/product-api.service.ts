@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { ResponseScrape } from '../model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ScrappingService {
+export class ProductApiService {
   /**
    * ===========================================================================
    * constructor
@@ -16,8 +19,15 @@ export class ScrappingService {
    * Method
    * ===========================================================================
    */
-  getProductInfo(url: string): void {
-    // TODO url 페이지 스크래핑
-    console.log(url);
+  scrapeProductInfo(param: { url: string }): Observable<ResponseScrape> {
+    console.log(param);
+    const testData: ResponseScrape = {
+      attachmentUrl: 'https://testest.com/product/1234',
+      brandName: 'test_brand_name',
+      name: 'test_name'
+    };
+    return new Observable<ResponseScrape>((subscriber) =>
+      subscriber.next(testData)
+    );
   }
 }

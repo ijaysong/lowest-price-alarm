@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 
-import { finalize, Observable } from 'rxjs';
+import { finalize } from 'rxjs';
 
-import { ScrappingService } from '../../../_core/services/scrapping.service';
-import { ProductInfoAction } from '../../model';
+import { ProductInfoAction, ResponseScrape } from '../../model';
+import { ProductApiService } from '../../services/product-api.service';
 
 @Component({
   selector: 'app-product-info',
@@ -15,6 +16,12 @@ export class ProductInfoComponent implements OnInit {
   @Output() prev = new EventEmitter<ProductInfoAction>();
   @Output() closeWindow = new EventEmitter<ProductInfoAction>();
 
+  newForm = new FormGroup({
+    attachmentUrl: new FormControl<string>(''),
+    brandName: new FormControl<string>(''),
+    name: new FormControl<string>('')
+  });
+
   spinnerName = 'product-info';
 
   /**
@@ -24,7 +31,7 @@ export class ProductInfoComponent implements OnInit {
    */
   constructor(
     private spinner: NgxSpinnerService,
-    private scrapper: ScrappingService
+    private apiService: ProductApiService
   ) {}
 
   /**
@@ -33,11 +40,7 @@ export class ProductInfoComponent implements OnInit {
    * ===========================================================================
    */
   ngOnInit(): void {
-    this.spinner.show(this.spinnerName);
-
-    new Observable(() => {
-      this.scrapper.getProductInfo(this.url);
-    }).pipe(finalize(() => this.onFinalize()));
+    this.scrapeProductInfo(this.url);
   }
 
   /**
@@ -45,6 +48,20 @@ export class ProductInfoComponent implements OnInit {
    * Method
    * ===========================================================================
    */
+  scrapeProductInfo(url: string): void {
+    this.spinner.show(this.spinnerName);
+    this.apiService
+      .scrapeProductInfo({ url })
+      .pipe(finalize(() => this.onFinalize()))
+      .subscribe((x: ResponseScrape) => {
+        this.newForm.setValue({
+          attachmentUrl: x.attachmentUrl,
+          brandName: x.brandName,
+          name: x.name
+        });
+      });
+  }
+
   onSubmit(): void {
     // TODO reqData 모집
     // TODO save api 호출
