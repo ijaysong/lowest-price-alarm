@@ -20,7 +20,7 @@ export class ValidateService {
    */
   isWconceptURL(url: string): boolean {
     const domainRegex = new RegExp(
-      `^(https?):\\/\\/(m|www).(${Environment.wconceptDomain}\\/product\\/)([0-9]{9})`,
+      `^(https?):\\/\\/(m|www).(${Environment.wconceptUrl}\\/product\\/)([0-9]{9})`,
       'i'
     );
     return domainRegex.test(url);

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ResponseScrape } from '../model';
+import { ProductInfoReqData, ResponseScrape } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,15 +19,21 @@ export class ProductApiService {
    * Method
    * ===========================================================================
    */
+  registerProduct(reqData: ProductInfoReqData): Observable<unknown> {
+    console.log(reqData);
+    return new Observable<unknown>();
+  }
+
   scrapeProductInfo(param: { url: string }): Observable<ResponseScrape> {
     console.log(param);
-    const testData: ResponseScrape = {
-      attachmentUrl: 'https://testest.com/product/1234',
-      brandName: 'test_brand_name',
-      name: 'test_name'
+    const mockData: ResponseScrape = {
+      attachmentUrl:
+        'https://product-image.wconcept.co.kr/productimg/image/img9/35/301814835_OB54365.jpg',
+      brandName: 'Slowslowly',
+      name: 'No.65 / Daisy Raffia Mini Tote Bag (데이지 꽃 자수 라피아 미니 토트백 크로쉐백 라탄 니트가방)'
     };
     return new Observable<ResponseScrape>((subscriber) =>
-      subscriber.next(testData)
+      subscriber.next(mockData)
     );
   }
 }

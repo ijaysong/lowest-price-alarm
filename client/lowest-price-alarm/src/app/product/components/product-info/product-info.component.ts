@@ -4,7 +4,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 
 import { finalize } from 'rxjs';
 
-import { ProductInfoAction, ResponseScrape } from '../../model';
+import {
+  ProductInfoAction,
+  ProductInfoReqData,
+  ResponseScrape
+} from '../../model';
 import { ProductApiService } from '../../services/product-api.service';
 
 @Component({
@@ -54,18 +58,33 @@ export class ProductInfoComponent implements OnInit {
       .scrapeProductInfo({ url })
       .pipe(finalize(() => this.onFinalize()))
       .subscribe((x: ResponseScrape) => {
-        this.newForm.setValue({
-          attachmentUrl: x.attachmentUrl,
-          brandName: x.brandName,
-          name: x.name
-        });
+        this.newForm.patchValue(x);
       });
   }
 
+  getReqData(): ProductInfoReqData {
+    const rawData = this.newForm.getRawValue();
+    return {
+      url: this.url,
+      attachmentUrl: rawData.attachmentUrl as string,
+      brandName: rawData.brandName as string,
+      name: rawData.name as string
+    };
+  }
+
   onSubmit(): void {
-    // TODO reqData 모집
-    // TODO save api 호출
-    this.closeWindow.emit({ submit: true });
+    if (this.newForm.invalid) {
+      console.log(this.newForm.errors);
+      return;
+    }
+    this.spinner.show(this.spinnerName);
+    const reqData = this.getReqData();
+    this.apiService
+      .registerProduct(reqData)
+      .pipe(finalize(() => this.onFinalize()))
+      .subscribe(() => {
+        this.closeWindow.emit({ submit: true });
+      });
   }
 
   onClickMovePrev(): void {
