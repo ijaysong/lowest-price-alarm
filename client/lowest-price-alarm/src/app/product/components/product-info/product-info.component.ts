@@ -20,7 +20,7 @@ export class ProductInfoComponent implements OnInit {
   @Output() prev = new EventEmitter<ProductInfoAction>();
   @Output() closeWindow = new EventEmitter<ProductInfoAction>();
 
-  newForm = new FormGroup({
+  infoForm = new FormGroup({
     attachmentUrl: new FormControl<string>(''),
     brandName: new FormControl<string>(''),
     name: new FormControl<string>('')
@@ -37,6 +37,18 @@ export class ProductInfoComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private apiService: ProductApiService
   ) {}
+
+  get attachmentUrl(): string {
+    return this.infoForm.get('attachmentUrl')?.value as string;
+  }
+
+  get brandName(): string {
+    return this.infoForm.get('brandName')?.value as string;
+  }
+
+  get name(): string {
+    return this.infoForm.get('name')?.value as string;
+  }
 
   /**
    * ===========================================================================
@@ -58,12 +70,12 @@ export class ProductInfoComponent implements OnInit {
       .scrapeProductInfo({ url })
       .pipe(finalize(() => this.onFinalize()))
       .subscribe((x: ResponseScrape) => {
-        this.newForm.patchValue(x);
+        this.infoForm.patchValue(x);
       });
   }
 
   getReqData(): ProductInfoReqData {
-    const rawData = this.newForm.getRawValue();
+    const rawData = this.infoForm.getRawValue();
     return {
       url: this.url,
       attachmentUrl: rawData.attachmentUrl as string,
@@ -73,8 +85,8 @@ export class ProductInfoComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.newForm.invalid) {
-      console.log(this.newForm.errors);
+    if (this.infoForm.invalid) {
+      console.log(this.infoForm.errors);
       return;
     }
     this.spinner.show(this.spinnerName);

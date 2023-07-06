@@ -26,3 +26,24 @@
     }
   }
 }
+
+.info {
+  &__content {
+    display: flex;
+    &-image {
+      height: 240px;
+      margin: 0px 100px;
+    }
+    &-detail {
+      margin-top: 15px;
+      margin-right: 50px;
+    }
+  }
+  &__buttons {
+    display: flex;
+    justify-content: end;
+    h3 {
+      margin : 7px 10px 10px 10px;
+    }
+  }
+}

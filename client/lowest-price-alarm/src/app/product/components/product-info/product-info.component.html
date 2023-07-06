@@ -1,9 +1,18 @@
 <div>
-  <div class="add__buttons">
-    <h3>2/2</h3>
-    <div>
-      <button (click)="onClickMovePrev()" fillMode="clear" kendoButton size="medium">이전</button>
-      <button (click)="onSubmit()" kendoButton size="medium" themeColor="secondary">저장</button>
+  <form (submit)="onSubmit()" [formGroup]="infoForm">
+    <div class="info__content">
+      <img class="info__content-image" src={{attachmentUrl}}>
+      <div class="info__content-detail">
+        <h3>{{brandName}}</h3>
+        <p>{{name}}</p>
+      </div>
     </div>
-  </div>
+    <div class="info__buttons">
+      <h3>2/2</h3>
+      <div>
+        <button (click)="onClickMovePrev()" fillMode="clear" kendoButton size="medium">이전</button>
+        <button kendoButton size="medium" themeColor="secondary" type="submit">저장</button>
+      </div>
+    </div>
+  </form>
 </div>
