@@ -86,15 +86,3 @@
     background: #ebf0f2;
   }
 }
-
-.dialog {
-  &__text {
-    display: flex;
-    justify-content: center;
-  }
-  &__buttons {
-    display: flex;
-    justify-content: end;
-    margin: 10px;
-  }
-}

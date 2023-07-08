@@ -47,3 +47,15 @@
     }
   }
 }
+
+.delete {
+  &__content {
+    display: flex;
+    justify-content: center;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: end;
+    margin: 10px;
+  }
+}
