@@ -27,7 +27,7 @@
 }
 
 .content {
-  padding: 1% 0%;
+  padding: 1% 0% 2% 0%;
   background: #ebf0f2;
   &__inner {
     width:  1024px;
@@ -73,16 +73,5 @@
   &__button {
     width: 316px;
     margin-bottom: 2%;
-  }
-}
-
-.footer {
-  padding: 5px;
-  &__inner {
-    display: flex;
-    justify-content: center;
-  }
-  &__error {
-    background: #ebf0f2;
   }
 }

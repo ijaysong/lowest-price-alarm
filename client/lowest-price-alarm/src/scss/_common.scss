@@ -1,13 +1,21 @@
+html, body {
+  height: 100%;
+}
+
 body, input, button, a {
   font-family: 'campton', 'Apple SD Gothic Neo', NanumBarunGothic, '나눔바른고딕', Malgun Gothic, '맑은 고딕', dotum, sans-serif;
   color: #292828
 }
 
-body {
-  margin: 0px;
-  padding: 0px;
-}
-
 .margin-5 {
   margin: 5px;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
 }

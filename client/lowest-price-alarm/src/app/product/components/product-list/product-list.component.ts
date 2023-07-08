@@ -7,8 +7,12 @@ import {
 } from '@progress/kendo-angular-dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 
+import { finalize } from 'rxjs';
+
 import { OverlayService } from '../../../_core/services/overlay.service';
 import { UiNotificationService } from '../../../_core/services/ui-notification.service';
+import { ResponseProduct } from '../../model';
+import { ProductApiService } from '../../services/product-api.service';
 import { ProductService } from '../../services/product.service';
 import { ProductNewLayoutComponent } from '../layout/product-new-layout/product-new-layout.component';
 
@@ -17,6 +21,9 @@ import { ProductNewLayoutComponent } from '../layout/product-new-layout/product-
   templateUrl: './product-list.component.html'
 })
 export class ProductListComponent implements OnInit {
+  selectedIds: number[] = [];
+  gridData: ResponseProduct[] = [];
+
   spinnerName = 'product-delete';
 
   /**
@@ -27,6 +34,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private spinner: NgxSpinnerService,
     private service: ProductService,
+    private apiService: ProductApiService,
     private notificationService: UiNotificationService,
     private overlayService: OverlayService
   ) {}
@@ -46,7 +54,9 @@ export class ProductListComponent implements OnInit {
    * ===========================================================================
    */
   refreshGrid(): void {
-    // TODO 리스트 api 호출
+    this.apiService.retrieveProducts().subscribe((x) => {
+      this.gridData = x.list;
+    });
   }
 
   onClickNewItem(): void {
@@ -74,14 +84,13 @@ export class ProductListComponent implements OnInit {
       } else {
         if (result.text === 'confirm') {
           this.spinner.show(this.spinnerName);
-          // TODO 삭제 api 호출
-          // this.api
-          //   .deleteProduct(id)
-          //   .pipe(finalize(() => this.onFinalize()))
-          //   .subscribe(() => {
-          //     this.refreshGrid();
-          //     this.notificationService.notifySuccessDeleted();
-          //   });
+          this.apiService
+            .deleteProducts(this.selectedIds)
+            .pipe(finalize(() => this.onFinalize()))
+            .subscribe(() => {
+              this.refreshGrid();
+              this.notificationService.notifySuccessDeleted();
+            });
         }
       }
     });
