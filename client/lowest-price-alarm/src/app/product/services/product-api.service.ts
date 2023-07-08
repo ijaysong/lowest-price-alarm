@@ -34,4 +34,9 @@ export class ProductApiService {
     };
     return of(mockData);
   }
+
+  deleteProduct(param: { id: number }): Observable<unknown> {
+    console.log(id);
+    return of({});
+  }
 }

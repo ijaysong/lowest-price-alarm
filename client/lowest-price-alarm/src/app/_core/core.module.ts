@@ -6,7 +6,6 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { NotificationService } from '@progress/kendo-angular-notification';
 
 import { ErrorContentPaneComponent } from './components/content-pane/error/error-content-pane.component';
-import { DeleteConfirmDialogComponent } from './components/dialog/delete-confirm/delete-confirm-dialog.component';
 import { FooterPaneComponent } from './components/footer-pane/footer-pane.component';
 import { HeaderPaneComponent } from './components/header-pane/header-pane.component';
 import { ErrorLayoutComponent } from './components/layout/error-layout/error-layout.component';
@@ -16,7 +15,6 @@ import { OverlayContainerDirective } from './directives/overlay-container.direct
   declarations: [
     HeaderPaneComponent,
     FooterPaneComponent,
-    DeleteConfirmDialogComponent,
     ErrorLayoutComponent,
     ErrorContentPaneComponent,
     OverlayContainerDirective

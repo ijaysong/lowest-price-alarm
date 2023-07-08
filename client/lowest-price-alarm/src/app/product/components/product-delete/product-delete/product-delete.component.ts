@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-
 import { DialogContentBase, DialogRef } from '@progress/kendo-angular-dialog';
 
 @Component({
-  selector: 'app-delete-confirm-dialog',
-  templateUrl: './delete-confirm-dialog.component.html'
+  selector: 'app-product-delete',
+  templateUrl: './product-delete.component.html'
 })
-export class DeleteConfirmDialogComponent extends DialogContentBase {
+export class ProductDeleteComponent extends DialogContentBase {
   /**
    * ===========================================================================
    * constructor

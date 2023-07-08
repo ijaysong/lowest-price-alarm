@@ -7,8 +7,8 @@ import {
   WindowService
 } from '@progress/kendo-angular-dialog';
 
-import { DeleteConfirmDialogComponent } from '../../_core/components/dialog/delete-confirm/delete-confirm-dialog.component';
 import { ProductNewLayoutComponent } from '../components/layout/product-new-layout/product-new-layout.component';
+import { ProductDeleteComponent } from '../components/product-delete/product-delete/product-delete.component';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +40,7 @@ export class ProductService {
 
   openDeleteDialog(): DialogRef {
     return this.dialogService.open({
-      content: DeleteConfirmDialogComponent,
+      content: ProductDeleteComponent,
       minWidth: 400
     });
   }

@@ -16,6 +16,7 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductNewComponent } from './components/product-new/product-new.component';
 import { CoreModule } from '../_core/core.module';
+import { ProductDeleteComponent } from './components/product-delete/product-delete/product-delete.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CoreModule } from '../_core/core.module';
     ProductNewComponent,
     ProductListLayoutComponent,
     ProductNewLayoutComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    ProductDeleteComponent
   ],
   imports: [
     GridModule,
