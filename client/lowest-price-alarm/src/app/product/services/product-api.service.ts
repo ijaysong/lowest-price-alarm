@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { ProductInfoReqData, ResponseScrape } from '../model';
 
@@ -21,7 +21,7 @@ export class ProductApiService {
    */
   registerProduct(reqData: ProductInfoReqData): Observable<unknown> {
     console.log(reqData);
-    return new Observable<unknown>();
+    return of({});
   }
 
   scrapeProductInfo(param: { url: string }): Observable<ResponseScrape> {
@@ -32,8 +32,6 @@ export class ProductApiService {
       brandName: 'Slowslowly',
       name: 'No.65 / Daisy Raffia Mini Tote Bag (데이지 꽃 자수 라피아 미니 토트백 크로쉐백 라탄 니트가방)'
     };
-    return new Observable<ResponseScrape>((subscriber) =>
-      subscriber.next(mockData)
-    );
+    return of(mockData);
   }
 }
