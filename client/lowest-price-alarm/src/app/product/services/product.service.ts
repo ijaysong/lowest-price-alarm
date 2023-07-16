@@ -33,7 +33,7 @@ export class ProductService {
     return this.windowService.open({
       autoFocusedElement: 'form',
       content: ProductNewLayoutComponent,
-      title: ``,
+      title: '상품 등록',
       minWidth: 700
     });
   }
