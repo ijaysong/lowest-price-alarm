@@ -1,5 +1,6 @@
 use lowest_price_alarm;
 
+# Product Attachment
 CREATE TABLE product_attachment (
     id                  INT           UNSIGNED      NOT NULL    AUTO_INCREMENT,
     url                 VARCHAR(500)                NOT NULL,
@@ -11,6 +12,7 @@ CREATE TABLE product_attachment (
     PRIMARY KEY (id)
 );
 
+# Product Status
 CREATE TABLE product_status (
     id      INT   UNSIGNED  NOT NULL    AUTO_INCREMENT,
     code    VARCHAR(50)     NOT NULL,
@@ -18,6 +20,7 @@ CREATE TABLE product_status (
     PRIMARY KEY (id)
 );
 
+# Company
 CREATE TABLE company (
     id          INT            UNSIGNED     NOT NULL    AUTO_INCREMENT,
     name        VARCHAR(200)                NOT NULL,
@@ -25,6 +28,7 @@ CREATE TABLE company (
     PRIMARY KEY (id)
 );
 
+# Product
 CREATE TABLE product (
     id                      INT           UNSIGNED      NOT NULL    AUTO_INCREMENT,
     company_id              INT           UNSIGNED      NOT NULL,
@@ -46,9 +50,9 @@ CREATE TABLE product (
 
 CREATE UNIQUE INDEX uix_product_01 ON product (url);
 
-ALTER TABLE product ADD CONSTRAINT FK_product_0 FOREIGN KEY (selling_company_id) REFERENCES selling_company (id);
-ALTER TABLE product ADD CONSTRAINT FK_product_1 FOREIGN KEY (attachment_id) REFERENCES attachment (id);
+ALTER TABLE product ADD CONSTRAINT FK_product_1 FOREIGN KEY (product_attachment_id) REFERENCES product_attachment (id);
 
+# Product Price History
 CREATE TABLE product_price_history (
     id              INT         UNSIGNED    NOT NULL    AUTO_INCREMENT,
     product_id      INT         UNSIGNED    NOT NULL,
