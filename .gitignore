@@ -25,3 +25,6 @@ go.work
 
 # DB docker-data
 /server/db/volumes
+
+# env
+server/modules/alarm/app/.env
