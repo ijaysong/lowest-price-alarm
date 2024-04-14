@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"app/api"
+	"app/config"
+)
 
 func main() {
-	fmt.Print("alarm-app 실행됨")
+	c := config.NewConfig()
+	api.Run(c)
 }
